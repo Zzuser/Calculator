@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/science_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7b7da3">
+    <Button
+        android:id="@+id/button_history"
+        android:textAllCaps="false"
+        android:layout_toRightOf="@+id/button_tan"
+        android:gravity="center"
+        android:text="history"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_sin"
+        android:layout_below="@id/button_history"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:text="sin"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_cos"
+        android:layout_below="@id/button_history"
+        android:textAllCaps="false"
+        android:layout_toRightOf="@+id/button_sin"
+        android:gravity="center"
+        android:text="cos"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_tan"
+        android:layout_below="@id/button_history"
+        android:textAllCaps="false"
+        android:layout_toRightOf="@+id/button_cos"
+        android:gravity="center"
+        android:text="tan"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_log"
+        android:textAllCaps="false"
+        android:layout_below="@+id/button_sin"
+        android:gravity="center"
+        android:text="log"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_ln"
+        android:textAllCaps="false"
+        android:layout_below="@id/button_sin"
+        android:layout_toRightOf="@+id/button_log"
+        android:gravity="center"
+        android:text="ln"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_fact"
+        android:textAllCaps="false"
+        android:layout_below="@id/button_sin"
+        android:layout_toRightOf="@+id/button_ln"
+        android:gravity="center"
+        android:text="!"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_sq"
+        android:textAllCaps="false"
+        android:layout_below="@id/button_log"
+        android:gravity="center"
+        android:text="^"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_sqr"
+        android:textAllCaps="false"
+        android:layout_below="@id/button_log"
+        android:layout_toRightOf="@+id/button_sq"
+        android:gravity="center"
+        android:text="√"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_percent"
+        android:textAllCaps="false"
+        android:layout_below="@id/button_log"
+        android:layout_toRightOf="@+id/button_sqr"
+        android:gravity="center"
+        android:text="%"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_PI"
+        android:textAllCaps="false"
+        android:layout_below="@id/button_sq"
+        android:gravity="center"
+        android:text="π"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_e"
+        android:textAllCaps="false"
+        android:layout_below="@id/button_sq"
+        android:layout_toRightOf="@+id/button_PI"
+        android:gravity="center"
+        android:text="e"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_ans"
+        android:textAllCaps="false"
+        android:layout_below="@id/button_sq"
+        android:layout_toRightOf="@+id/button_e"
+        android:gravity="center"
+        android:text="Ans"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+    <Button
+        android:id="@+id/button_bracket_left"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:text="("
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_bracket_right"
+        android:textAllCaps="false"
+        android:layout_toRightOf="@+id/button_bracket_left"
+        android:gravity="center"
+        android:text=")"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_shift"
+        android:textAllCaps="false"
+        android:layout_toRightOf="@+id/button_bracket_right"
+        android:gravity="center"
+        android:text="arc"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+    <Button
+        android:id="@+id/button_binary"
+        android:layout_below="@id/button_history"
+        android:textAllCaps="false"
+        android:layout_toRightOf="@+id/button_tan"
+        android:gravity="center"
+        android:text="Bin"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_octal"
+        android:textAllCaps="false"
+        android:layout_below="@id/button_binary"
+        android:layout_toRightOf="@+id/button_tan"
+        android:gravity="center"
+        android:text="Oct"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_decimal"
+        android:textAllCaps="false"
+        android:layout_below="@id/button_octal"
+        android:layout_toRightOf="@+id/button_tan"
+        android:gravity="center"
+        android:text="Dec"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+    <Button
+        android:id="@+id/button_hexadecimal"
+        android:textAllCaps="false"
+        android:layout_below="@id/button_decimal"
+        android:layout_toRightOf="@+id/button_tan"
+        android:gravity="center"
+        android:text="Hex"
+        android:textSize="20sp"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="25%" />
+
+
+    
+
+
+</android.support.percent.PercentRelativeLayout>
+
