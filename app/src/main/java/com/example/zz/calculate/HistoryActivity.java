@@ -8,6 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+/***
+ * Created by zz on 17-5-13.
+ * 计算器历史记录显示界面
+ *  historyList用来容纳所有的历史记录条目，数据由MainActivity传入
+ */
+
 public class HistoryActivity extends AppCompatActivity {
     private List<History> historyList = new ArrayList<>();
 

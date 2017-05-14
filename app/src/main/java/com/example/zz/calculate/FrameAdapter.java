@@ -13,14 +13,16 @@ import java.util.List;
 
 /**
  * Created by zz on 17-5-12.
+ * RecyclerView的适配器
  */
 
 public class FrameAdapter extends RecyclerView.Adapter<FrameAdapter.ViewHolder> implements View.OnClickListener, View.OnLongClickListener {
-    private List<Frame> mFramesList;
-    MainActivity context;
-    Calculate calculate = new Calculate();
-    BaseCalculate baseButton;
-    ScienceCalculate scienceButton;
+    private List<Frame> mFramesList;            //不同键盘框架的集合
+    MainActivity context;                       //从MainActivity中获取上下文
+    Calculate calculate = new Calculate();      //初始化计算模块
+
+    BaseCalculate baseButton;                   //基础计算键盘
+    ScienceCalculate scienceButton;             //科学计算键盘
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -51,6 +53,11 @@ public class FrameAdapter extends RecyclerView.Adapter<FrameAdapter.ViewHolder> 
         return holder;
     }
 
+    /***
+     * 控制不同种类键盘是否显示
+     * @param holder
+     * @param position
+     */
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
@@ -273,9 +280,15 @@ public class FrameAdapter extends RecyclerView.Adapter<FrameAdapter.ViewHolder> 
         return true;
     }
 
+    /***
+     * 控制不同类型按键的显示
+     * @param type
+     * @param show
+     * @param calculate
+     */
     public void Show(int type, String show, String calculate) {
         switch (type) {
-            case MyButton.ACTION_OPERATOR:
+            case MyButton.ACTION_OPERATOR:                      //ACTION_OPERATOR类型按键的显示
                 Log.d("bottomShowData", "SHow: " + calculate);
                 context.textView.setText(calculate);
                 Log.d("TopShowData", "SHow: " + show);
@@ -285,13 +298,15 @@ public class FrameAdapter extends RecyclerView.Adapter<FrameAdapter.ViewHolder> 
                 context.textView.setGravity(Gravity.TOP);
                 context.textView.setGravity(Gravity.BOTTOM | Gravity.RIGHT);
                 break;
-            case MyButton.REMOVE:
+
+            case MyButton.REMOVE:                                //删除操作的显示
                 Log.d("bottomShowData", "SHow: " + calculate);
                 context.textView.setText(calculate);
                 Log.d("TopShowData", "SHow: " + show);
                 context.textViewTop.setText(show);
                 break;
-            default:
+
+            default:                                              //其他按键类型的显示
                 Log.d("Show", "Show: default show");
                 context.textView.setText(show);
                 context.ReFlashTextView();
@@ -299,6 +314,10 @@ public class FrameAdapter extends RecyclerView.Adapter<FrameAdapter.ViewHolder> 
         }
     }
 
+    /***
+     * 大多数按键响应的方法
+     * @param tempButton
+     */
     public void Click(MyButton tempButton) {
         Log.d("BUTTON", "in onClick ");
 

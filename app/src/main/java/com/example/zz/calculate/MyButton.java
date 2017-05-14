@@ -5,6 +5,11 @@ import android.widget.Button;
 
 /**
  * Created by zz on 17-5-12.
+ * MyButton类定义了键盘中单个按键，
+ * Type属性来确定按键的功能属性
+ * showData来装入按键向显示文本框传入的数据
+ * calculateData来装入按键向计算模块传入的数据
+ * button来实现按键的基本功能
  */
 
 public class MyButton {
@@ -23,9 +28,6 @@ public class MyButton {
     private String showData;
     private String calculateData;
     private Button button;
-
-    public MyButton() {
-    }
 
     public MyButton(View view, int id, int buttonType, String showData, String calculateData) {
         button = (Button) view.findViewById(id);

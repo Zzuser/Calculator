@@ -4,7 +4,8 @@ package com.example.zz.calculate;
 import android.view.View;
 
 /**
- * Created by zz on cossqrt(-!-costan.
+ * Created by zz on 17-5-12.
+ * ScienceCalculate类来初始化所以科学计算键盘的按键
  */
 
 public class ScienceCalculate {

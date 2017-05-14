@@ -4,6 +4,7 @@ import android.view.View;
 
 /**
  * Created by zz on 17-5-12.
+ * BaseCalculate类来初始化所有基础计算所需的按键
  */
 
 public class BaseCalculate {

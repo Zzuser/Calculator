@@ -11,9 +11,15 @@ import java.util.Arrays;
 
 /**
  * Created by zz on 17-5-12.
+ * 计算器的计算控制模块
+ * calculateData缓存将要被计算的数据
+ * bottomShowData缓存将要被显示文本框下方显示的数据
+ * topShowData缓存将要被显示文本框上分方显示的数据
+ * result缓存计算结果
  */
 
 public class Calculate {
+    //连续按键计数器，来计数一个按键被连续按的次数
     public static int count_NUMBER_TYPE = 0;
     public static int count_BIN_OPERATOR = 0;
     public static int count_CONSTANT_TYPE = 0;
@@ -23,8 +29,9 @@ public class Calculate {
     public static int count_ACTION_OPERATOR = 0;
     public static int count_REMOVE = 0;
     public static int count_DOT = 0;
-    public static int[] OPERATION;
-    public static int COUNT = 0;
+    //操作历史
+    public static int COUNT = 0;    //操作总次数
+    public static int[] OPERATION;  //操作按键类型记录
 
     private StringBuilder calculateData;
     private StringBuilder bottomShowData;
@@ -39,6 +46,9 @@ public class Calculate {
         OPERATION = new int[100];
     }
 
+    /***
+     *Calculate()负责将计算结果格式化后传入result
+     */
     public void Calculate() {
         DecimalFormat decimalFormat = new DecimalFormat("###################.##########");
         try {
@@ -49,6 +59,10 @@ public class Calculate {
         }
     }
 
+    /***
+     *Equal()负责将计算完的公式传入topShowData；
+     * 将计算得到的result传入topShowData；
+     */
     public void Equal() {
         Log.d("bottomShowData", "Equal: pre" + topShowData);
         Log.d("bottomShowData", "Equal: pre" + bottomShowData);
@@ -64,6 +78,9 @@ public class Calculate {
         Log.d("bottomShowData", "Equal: late" + result);
     }
 
+    /***
+     *Clear()清空所有缓存，并将所有按键状态恢复到默认值
+     */
     public void Clear() {
         topShowData.setLength(0);
         bottomShowData.setLength(0);
@@ -82,6 +99,9 @@ public class Calculate {
 
     }
 
+    /***
+     *Remove()删除缓存中用户输入的上一个数据
+     */
     public void Remove() {
         if (bottomShowData.length() == 0 && calculateData.length() == 0) {
             //NOP
@@ -91,18 +111,22 @@ public class Calculate {
         }
     }
 
+    /***
+     *从按键的触发事件中获取按键的数据传入缓存
+     */
     public void appendData(String dataShow, String dataCalculate) {
         this.calculateData.append(dataCalculate);
         Log.d("button0", "showData: " + calculateData);
         this.bottomShowData.append(dataShow);
     }
 
+    /***
+     *通过按键的类型和顺序来确定按键是否该被触发，防止无效有害的输入
+     */
     public boolean OnOff(int type) {
-        Log.d("Calculate", "*******************************************");
         boolean onoff = true;
         switch (type) {
             case MyButton.NUMBER_TYPE:
-                Log.d("Calculate", "OnOff:" + count_ACTION_OPERATOR);
                 if (count_ACTION_OPERATOR == 1) {
                     Clear();
                 }
@@ -125,7 +149,7 @@ public class Calculate {
                     count_ACTION_OPERATOR = 0;
                     count_REMOVE = 0;
                     count_DOT = 0;
-                    Count(MyButton.NUMBER_TYPE);
+                    ClickHistory(MyButton.NUMBER_TYPE);
                 }
                 break;
 
@@ -142,7 +166,7 @@ public class Calculate {
                     count_ACTION_OPERATOR = 0;
                     count_REMOVE = 0;
                     count_DOT = 0;
-                    Count(MyButton.BIN_OPERATOR);
+                    ClickHistory(MyButton.BIN_OPERATOR);
                 }
                 break;
 
@@ -168,7 +192,7 @@ public class Calculate {
                     count_ACTION_OPERATOR = 0;
                     count_REMOVE = 0;
                     count_DOT = 0;
-                    Count(MyButton.CONSTANT_TYPE);
+                    ClickHistory(MyButton.CONSTANT_TYPE);
                 }
                 break;
 
@@ -190,7 +214,7 @@ public class Calculate {
                     count_ACTION_OPERATOR = 0;
                     count_REMOVE = 0;
                     count_DOT = 0;
-                    Count(MyButton.LEFT_OPERATOR);
+                    ClickHistory(MyButton.LEFT_OPERATOR);
                 }
                 break;
 
@@ -212,7 +236,7 @@ public class Calculate {
                     count_ACTION_OPERATOR = 0;
                     count_REMOVE = 0;
                     count_DOT = 0;
-                    Count(MyButton.SYMBOL);
+                    ClickHistory(MyButton.SYMBOL);
                 }
                 break;
 
@@ -238,7 +262,7 @@ public class Calculate {
                     count_ACTION_OPERATOR = 0;
                     count_REMOVE = 0;
                     count_DOT = 0;
-                    Count(MyButton.FUN_TYPE);
+                    ClickHistory(MyButton.FUN_TYPE);
                 }
                 break;
 
@@ -255,8 +279,7 @@ public class Calculate {
                 OPERATION = new int[100];
                 COUNT = 0;
                 break;
-            case MyButton.REMOVE:
-                Log.d("Calculate", "********************aaaaaaa***********************");
+            case MyButton.REMOVE:                   //根据操作记录删除本次操作的记录
                 try {
 
                     switch (OPERATION[COUNT - 1]) {
@@ -305,8 +328,6 @@ public class Calculate {
                 }
                 OPERATION[COUNT - 1] = 0;
                 COUNT--;
-                Log.d("Calculate", "OPERATION: ooo" + Arrays.toString(OPERATION));
-                Log.d("Calculate", "********************aaaaaaaa***********************");
                 break;
             case MyButton.DOT:
                 break;
@@ -331,11 +352,17 @@ public class Calculate {
         return onoff;
     }
 
-    public void Count(int type) {
+    /***
+     *生成按键的操作记录
+     */
+    public void ClickHistory(int type) {
         OPERATION[COUNT] = type;
         COUNT++;
     }
 
+    /***
+     * 根据按键操作记录恢复上一个按键连续计数器的状态（配合Remove使用，恢复输入被删除数据前的按键状态）
+     */
     public void Pull() {
         try {
             switch (OPERATION[COUNT - 2]) {
@@ -382,6 +409,9 @@ public class Calculate {
 
     }
 
+    /***
+     *System（）用来完成进制转换计算
+     */
     public void System(String s) throws SystemException {
         topShowData.setLength(0);
         try {
@@ -415,6 +445,9 @@ public class Calculate {
 
     }
 
+    /***
+     *eval()解析calculateData中要被计算的数据，并返回计算结果
+     */
     public static double eval(final String str) throws FactException {
 
         return new Object() {
@@ -517,6 +550,9 @@ public class Calculate {
 
     }
 
+    /***
+     *factorial()阶乘计算，拓展eval（）的计算方法
+     */
     public static BigDecimal factorial(BigDecimal n) throws FactException {
 
 
@@ -535,6 +571,9 @@ public class Calculate {
         }//n*f(n-1)
     }
 
+    /***
+     *计算阶乘会产生的异常
+     */
     public static class FactException extends Exception {
         String massage;
 
@@ -548,6 +587,9 @@ public class Calculate {
         }
     }
 
+    /***
+     *进制转换会产生的异常
+     */
     public static class SystemException extends Exception {
         String massage;
 
@@ -562,7 +604,7 @@ public class Calculate {
     }
 
     /***
-     *
+     *Get and Set
      */
     public StringBuilder getCalculateData() {
         return calculateData;
