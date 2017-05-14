@@ -1,2 +1,2 @@
 # Calculator
-This is a simple ScienceCalculator.
+This is a simple ScienceCalculator for Android.
