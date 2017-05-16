@@ -284,8 +284,9 @@ public class Calculate {
 
                     switch (OPERATION[COUNT - 1]) {
                         case MyButton.NUMBER_TYPE:
-                            Log.d("Calculate", "NUMBER_TYPE:-- ");
+                            Log.d("Calculate", "count_NUMBER_TYPE:-- " + count_NUMBER_TYPE);
                             count_NUMBER_TYPE--;
+                            Log.d("Calculate", "count_NUMBER_TYPE:-- " + count_NUMBER_TYPE);
                             Pull();
                             break;
                         case MyButton.CONSTANT_TYPE:
@@ -368,15 +369,21 @@ public class Calculate {
             switch (OPERATION[COUNT - 2]) {
                 case MyButton.NUMBER_TYPE:
                     Log.d("Calculate", "NUMBER_TYPE:++ ");
-                    count_NUMBER_TYPE++;
+                    if (count_NUMBER_TYPE == 0) {
+                        Log.d("Calculate", "NUMBER_TYPE:++ ");
+                        count_NUMBER_TYPE++;
+                    }
                     break;
                 case MyButton.CONSTANT_TYPE:
                     Log.d("Calculate", "CONSTANT_TYPE:++ ");
                     count_CONSTANT_TYPE++;
                     break;
                 case MyButton.FUN_TYPE:
-                    Log.d("Calculate", "FUN_TYPE:++ ");
-                    count_FUN_TYPE++;
+
+                    if (count_FUN_TYPE == 0) {
+                        Log.d("Calculate", "FUN_TYPE:++ ");
+                        count_FUN_TYPE++;
+                    }
                     break;
                 case MyButton.BIN_OPERATOR:
                     Log.d("Calculate", "BIN_OPERATOR: ++");
